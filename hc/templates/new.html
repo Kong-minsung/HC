@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="{% url 'home' %}">메인 페이지</a></li>
+            <li role="presentation" class="active"><a href="{% url 'new' %}">프로필 작성</a></li>
+            <li role="presentation"><a href="{% url 'ee' %}">주변 행사</a></li>
+          </ul>
+    </div>
+    <h1 align=center>프로필을 작성해주세요</h1>
+
+<form action="{% url 'create' %}" method="POST" enctype="multipart/form-data" align="center">
+    {% csrf_token %}
+    <p align="center">프로필사진<input type="file" name="image"></p>
+    <p>이름: <input type="text" name="name"></p>
+    <p>나이: <input type="text" name="age" placeholder="나이는 숨겨집니다"></p>
+    <p>이메일: <input type="text" name="email"></p>
+    자기소개: <textarea name="introduce" cols="60" rows="20"></textarea> 
+    <div class="form-row field-like">
+        <div>
+            <label class="required" for="id_like">관심사:</label>
+                 <select name="like" required id="id_like">
+<option value="" selected>---------</option>
+<option value="음악">음악</option>
+<option value="스포츠">스포츠</option>
+<option value="동물">동물</option>
+<option value="영화">영화</option>
+</select>
+        </div>
+    </div>
+
+</fieldset></p>
+    <button type="submit">입력완료</button>
+</form>
+</body>
+</html>

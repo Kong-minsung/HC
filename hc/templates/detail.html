@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hc Detail</title>
+</head>
+<body>
+    <div class="container" align=center>
+        
+        <h1>{{hc.name}}님의 정보</h1>
+        <hr>
+        <p><img src="{{hc.image.url}}" alt=""></p>
+        <div style="display: none;">
+        나이: {{hc.age}} <br><br>
+    </div>
+        가입 날짜: {{hc.pub_date}} <br><br>
+        이메일: {{hc.email}} <br><br>
+        {{hc.introduce}}<br><br>
+        관심사: {{hc.like}}<br><br>
+        <a href="{% url 'edit' hc.id %}">Edit</a>
+        <a href="{% url 'delete' hc.id %}">Delete</a><br>
+        <a href="{% url 'home' %}">메인 페이지로 돌아가기</a>
+    </div>
+</body>
+</html>

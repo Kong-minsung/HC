@@ -1,0 +1,40 @@
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hc</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="{% url 'home' %}">메인 페이지</a></li>
+            <li role="presentation"><a href="{% url 'new' %}">프로필 작성</a></li>
+            <li role="presentation"><a href="{% url 'ee' %}">주변 행사</a></li>
+          </ul>
+    </div>
+    <h1 align=center>Human Connect</h1>
+    <h3 align=center>비슷한 관심사를 가진 사람들을 찾아보세요</h3>
+    <h3 align=center>다양한 행사 정보도 제공합니다</h3>
+    <hr>
+    
+    {% for hc in hc %}
+    <div class="col-sm-6 col-md-4" align=center>
+        <div class="thumbnail">
+            <div class="caption">
+        <p><img src="{{hc.image.url}}" alt=""></p>
+        <h1>{{hc.name}}</h1><br>        
+        {{hc.introduce}}<br><br>
+        관심사:{{hc.like}}<br><br>
+        <a href="{% url 'detail' hc.id %}">상세정보</a>
+  </div>
+</div>
+</div>
+    {% endfor %}
+</body>
+</html>

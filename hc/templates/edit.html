@@ -1,0 +1,23 @@
+<h1 align=center>프로필을 수정합니다</h1>
+
+<form action="{% url 'update' hc.id %}" method="POST" enctype="multipart/form-data" align=center>
+    {% csrf_token %}
+    <p>프로필사진<input type="file" name="image" value="{{hc.image}}"></p>
+    <p>이름: <input type="text" name="name" value="{{hc.name}}"></p>
+    <p>나이: <input type="text" name="age" value="{{hc.age}}"></p>
+    <p>이메일: <input type="text" name="email" value="{{hc.email}}"></p>
+    자기소개: <textarea name="introduce" cols="60" rows="20">{{hc.introduce}}</textarea>
+    <div class="form-row field-like">
+        <div>
+            <label class="required" for="id_like">관심사:</label>
+                 <select name="like" required id="id_like">
+<option value="">---------</option>
+<option value="음악">음악</option>
+<option value="스포츠">스포츠</option>
+<option value="동물">동물</option>
+<option value="영화">영화</option>
+</select>
+        </div>
+    </div>
+    <button type="submit">수정</button>
+</form>

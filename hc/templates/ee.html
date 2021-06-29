@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ee</title>
+    <style>
+        body {
+          background-image: url(backw.jpg);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 1700px;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href="{% url 'home' %}">메인 페이지</a></li>
+            <li role="presentation"><a href="{% url 'new' %}">프로필 작성</a></li>
+            <li role="presentation" class="active"><a href="{% url 'ee' %}">주변 행사</a></li>
+            <input type="text" id="str">
+<input type="button" value="찾기" onclick="findStr()">
+<div>
+</div>
+<script type="text/javascript">
+function findStr() {
+    var n = 0;
+    var str = document.getElementById("str").value;
+    if(navigator.userAgent.indexOf("rv:11") > -1) {
+        var f, contents = document.body.createTextRange();
+        for(var i = 0; i <= n && (f = contents.findText(str)) != false; i++) {
+            contents.moveStart('character');
+            contents.moveEnd('textedit');
+        }
+        if(f) {
+            contents.moveStart('character', -1);
+            contents.findText(str);
+            contents.select();
+            n++;
+        }
+    } else {
+        window.find(str);
+    }
+}
+</script>
+          </ul>
+    <h1 align="center">주변 행사 정보</h1>
+    <table border="1" align="center">
+        <th><img src="{% static 'baseball.jpg' %}" width="300" height="300"></th>
+        <td><ul>
+            <li>경기도 수원시 장안구 조원1동 경수대로 893 kt위즈파크</li><br>
+            <li>2022.6.22</li><br>
+            <li>KT 위즈 vs KIA 타이거스</li><br>
+            <li>야구경기</li><br>
+            <li><a href="{https://www.ktwiz.co.kr/}">공식 홈페이지</a></li>
+        </ul></td>
+        <tr>
+        <th><img src="{% static 'soccer.jpg' %}" width="300" height="300"></th>
+        <td colspan="3"><ul>
+            <li>경기도 수원시 우만1동 수원월드컵경기장</li><br>
+            <li>2022.06.28</li><br>
+            <li>수원 FMC vs 인천 레드 엔젤스</li><br>
+            <li>축구경기<br>
+
+                유의사항<br>
+
+                운영시간 변경 (사회적 거리두기 2단계에 따른 변경 사항)<br>
+
+                기존 – 야간운영 19:30~22:30<br>
+                
+                변경 – 야간운영 19:00~22:00</li><br>
+            <li><a href="https://suwonworldcup.gg.go.kr/">공식 홈페이지</a></li>
+        </ul></td>
+        </tr>
+        <tr>
+        <th><img src="{% static 'hall.jpg' %}" width="300" height="300"></th>
+        <td colspan="3"><ul>
+            <li>경기도 수원시 효원로307번길 20 KR 경기아트센터</li><br>
+            <li>2022.07.01</li><br>
+            <li>수원시립공연단 연극</li><br>
+            <li>재미있을 예정</li><br>
+            <li><a href="http://www.ggac.or.kr/">공식 홈페이지</a></li>
+        </ul></td>
+        </tr>
+        </table>
+    </div>
+</body>
+</html>
